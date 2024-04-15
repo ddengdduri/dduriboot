@@ -1,4 +1,6 @@
-package com.example.myrestfulservice.bean;
+package com.example.myrestfulservice.exception;
+
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,10 +9,9 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-//자동 생성자
-public class HelloWorldBean {
+public class ExceptionResponse {
 
+	private Date timestamp;
 	private String message;
-
-	
+	private String details;
 }
