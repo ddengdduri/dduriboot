@@ -1,13 +1,16 @@
 package com.example.myrestfulservice.bean;
 
 import java.util.Date;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.Past;
 import jakarta.validation.constraints.Size;
@@ -42,4 +45,14 @@ public class User {
 	@Schema(title = "사용자 주민번호", description = "사용자 주민번호 입력합니다. ")
 	private String ssn;
 
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL) // 
+	private List<Post> posts;
+
+	public User(Integer id, String name, Date joinDate, String password, String ssn) {
+		this.id = id;
+		this.name = name;
+		this.joinDate = joinDate;
+		this.password = password;
+		this.ssn = ssn;
+	}
 }
